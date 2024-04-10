@@ -67,6 +67,6 @@
 
 ## Term of Use
 
-* [TERMS AND CONDITIONS OF USE FOR ISSUERS](term-of-use/terms-and-conditions-of-use-for-issuers.md)
+* [TERMS AND CONDITIONS OF USE FOR BORROWERS AND ISSUERS](term-of-use/terms-and-conditions-of-use-for-issuers.md)
 * [WEBSITE, JOLTIFY PROTOCOL AND JOLTIFY CHAIN TERMS AND CONDITIONS OF USE](term-of-use/website-joltify-protocol-and-joltify-chain-terms-and-conditions-of-use.md)
 * [PRIVACY POLICY](term-of-use/privacy-policy.md)
