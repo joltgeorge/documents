@@ -12,7 +12,7 @@ To begin your investment journey, follow the steps below to select a desired poo
 
 Once a pool is selected, you'll be directed to a detailed page displaying information and options related to your chosen pool (in Figure 2).
 
-<figure><img src="../../.gitbook/assets/rwa_personal_page.png" alt=""><figcaption><p>Figure 2: Personal investing page.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/rwa_personal_page (1).png" alt=""><figcaption><p>Figure 2: Personal investing page.</p></figcaption></figure>
 
 On the detailed investing page, users are presented with five actions to facilitate their investment activities: `INVEST`, `WITHDRAW`, `CLAIM`, `TRANSFER OWNERSHIP`, and `SUBMIT WITHDRAWAL PROPOSAL`.
 

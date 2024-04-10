@@ -49,7 +49,7 @@ Within this project, there are two pools: the `-junior` pool and the `-senior` p
 
 ## The "Personal Investment" Page
 
-<figure><img src="../../.gitbook/assets/rwa_personal_page.png" alt=""><figcaption><p>Figure 3: The "Personal Investment" page shows the detailed investing information for the connected account.</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/rwa_personal_page (1).png" alt=""><figcaption><p>Figure 3: The "Personal Investment" page shows the detailed investing information for the connected account.</p></figcaption></figure>
 
 As shown on the "Personal Investment" page, personal information and operational buttons are organised into five distinct sections. These sections are:
 
