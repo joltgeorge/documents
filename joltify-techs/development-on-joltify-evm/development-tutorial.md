@@ -98,7 +98,7 @@ npx hardhat [YOUR_TASK_NAME] --network testnet
 
 If you want a cleaner CLI experience, you can add some script aliases to `joltevm/package.json` as seen in the `scripts` section.
 
-## Step 5: Verify deployed contract
+## Step 5: Contract verification
 
 To verify the deployed contract on joltify EVM explorer, you are required to set up `etherscan` in `hardhat.config.js` file as follows:
 
