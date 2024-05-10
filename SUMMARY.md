@@ -41,6 +41,12 @@
   * [Configuration](joltify-techs/development-on-joltify-evm/configuration.md)
   * [Token Conversion](joltify-techs/development-on-joltify-evm/token-conversion.md)
   * [Development Tutorial](joltify-techs/development-on-joltify-evm/development-tutorial.md)
+* [Nodes and Validators](joltify-techs/nodes-and-validators/README.md)
+  * [Running a Node](joltify-techs/nodes-and-validators/running-a-node/README.md)
+    * [Joltify Installer](joltify-techs/nodes-and-validators/running-a-node/joltify-installer.md)
+    * [Manually Installing](joltify-techs/nodes-and-validators/running-a-node/manually-installing.md)
+  * [Validating On Joltify](joltify-techs/nodes-and-validators/validating-on-joltify.md)
+* [Endpoints](joltify-techs/endpoints.md)
 
 ## Joltify Testnet
 
