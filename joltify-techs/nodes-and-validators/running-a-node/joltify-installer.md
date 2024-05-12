@@ -1,37 +1,47 @@
 # Joltify Installer
 
-## Prerequisite
+{% hint style="info" %}
+**Requirements**\
+Before starting, make sure you read the [requirement](requirements.md) to make sure your hardware meets the necessary requirements.
+{% endhint %}
 
-* OS System: Linux
-* Python Version: >= 3
+## Installing Environment
 
-## Step 1: Clone Installer Source Code
+* **OS**: **Linux/arm64** or **Linux/amd64**
+* Python Version >= 3
+
+## 1. Clone Installer Source Code
+
+<pre class="language-sh"><code class="lang-sh"><strong># 1. go to the home directory
+</strong><strong>cd
+</strong><strong>
+</strong><strong># 2. Clone the installer source code
+</strong><strong>git clone https://gitlab.com/joltify/joltify-installer.git
+</strong></code></pre>
+
+## 2. Install Dependencies
 
 ```sh
-git clone https://gitlab.com/joltify/joltify-installer.git
-```
-
-## Step 2: Install Dependencies
-
-```
+# 1. go the installer folder
 cd joltify-installer
+
+# 2. install the requirements
 pip3 install -r requirements.txt
 ```
 
-## Step 3: Prepare Config Files
+## 3. Prepare Config Files
 
 ```shell
-# mainnet config
+# Set mainnet config
 cp .env.example .env.mainnet
-# or testnet config
+
+# or Set testnet config
 cp .env.example .env.testnet
 ```
 
-## Step 4: Start Installing
+## 4. Start Installing
 
-```
+```sh
+# Run the installer
 python3 joltify-installer.py
 ```
-
-
-

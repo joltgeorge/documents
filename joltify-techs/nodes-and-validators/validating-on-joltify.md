@@ -1,26 +1,36 @@
 # Validating On Joltify
 
-## Synced Node
+## 1. Run a full node
 
-Before creating a validator, ensure you have first followed the instructions on how to [run a node](running-a-node/).
+To become a validator, you must first have `joltify` binary CLI installed and be able to run a full node. You can follow the [guide](running-a-node/) to setup your full node if you haven't yet.
 
-## Initialize Wallet Keyring
+## 2. Create a validator
 
-If you decide you want to turn your node into a validator, you will first need to add a wallet to your keyring.
+In order to create a validator, you need to create a local wallet first. This will be used in order to hold the tokens that you will later delegate to your validator node, allowing the validator to properly work.&#x20;
 
-While you can add an existing wallet through your seed phrase, we will create a new wallet in this example (replace `KEY_NAME` with a name of your choice):
+In order to create a new wallet (replace `key_name` with a name of your choice), please run:
 
 ```sh
-joltify keys add KEY_NAME
+joltify keys add <key_name>
 ```
 
-Ensure you write down the mnemonic as you can not recover the wallet without it. To ensure your wallet was saved to your keyring, the wallet name (i.e., `KEY_NAME`) is in your keys list:
+{% hint style="info" %}
+Ensure you write down the mnemonic as you can not recover the wallet without it.&#x20;
+{% endhint %}
+
+**Or** you can add an existing wallet through your seed phrase:
+
+```
+joltify keys add <key_name> --recover
+```
+
+To ensure your wallet was saved to your keyring, the wallet name (i.e., `key_name`) is in your keys list:
 
 ```sh
 joltify keys list
 ```
 
-## Validator Public Key
+## 3. Obtain validator public key
 
 The last thing needed before initialising the validator is to obtain your validator public key which was created when you first initialised your node. To obtain your validator pubkey:
 
@@ -28,7 +38,7 @@ The last thing needed before initialising the validator is to obtain your valida
 joltify tendermint show-validator
 ```
 
-## Create Validator Command
+## 4. Create Validator Command
 
 Ensure you have a small amount of JOLT on the wallet address you are using on your keyring in order to successfully send a transaction. Once you have a balance on the address on your keyring, you can now send the create-validator transaction.
 
