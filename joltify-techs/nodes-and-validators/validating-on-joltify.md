@@ -6,23 +6,17 @@ To become a validator, you must first have `joltify` binary CLI installed and be
 
 ## 2. Create a validator
 
-In order to create a validator, you need to create a local wallet first. This will be used in order to hold the tokens that you will later delegate to your validator node, allowing the validator to properly work.&#x20;
+In order to create a validator, you need to create a wallet first. This will be used in order to hold the tokens that you will later delegate to your validator node, allowing the validator to properly work.
 
-In order to create a new wallet (replace `key_name` with a name of your choice), please run:
+For securing a validator, we highly recommend using a Ledger device. To create a new wallet with a Ledger (replace `key_name` with a name of your choice), please run:
 
 ```sh
-joltify keys add <key_name>
+joltify keys add <key_name> --ledger
 ```
 
 {% hint style="info" %}
-Ensure you write down the mnemonic as you can not recover the wallet without it.&#x20;
+If you encounter any connection problem with Ledger, you can refer to the [Ledger Support](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-USB-connection-issues-with-Ledger-Live?support=true).&#x20;
 {% endhint %}
-
-**Or** you can add an existing wallet through your seed phrase:
-
-```
-joltify keys add <key_name> --recover
-```
 
 To ensure your wallet was saved to your keyring, the wallet name (i.e., `key_name`) is in your keys list:
 
@@ -46,6 +40,7 @@ Here is the empty command:
 
 ```shell
 joltify tx staking create-validator \
+--ledger \ # if you are using ledger
 --from=[KEY_NAME] \
 --amount=[staking_amount_ujolt] \
 --pubkey=$(joltify tendermint show-validator) \
@@ -64,7 +59,8 @@ Here is the same command but with example values:
 
 ```sh
 joltify tx staking create-validator \
---from=operator \
+--ledger \ # if you are using ledger
+--from=myValidator \
 --amount=100000000ujolt \
 --pubkey=  \
 --moniker="brian" \
@@ -78,12 +74,13 @@ joltify tx staking create-validator \
 
 Here is the explanation of these command flags:
 
+* the `ledger` flag indicates that you are using Ledger
 * the `from` flag is the KEY\_NAME you created when initialising the key on your keyring
 * the `amount` flag is the amount you will place in your own validator in `ujolt` (in the above example, 100000000ujolt is 100JOLT )
 * the `pubkey` is the validator public key found earlier
 * the `moniker` is a human readable name you choose for your validator
 * the `security-contact` is an email your delegates are able to contact you at
-* the `chain-id` is whatever chain-id you are working with (in the Joltify Testnet case it is joltifydev\_1730-1)
+* the `chain-id` is whatever chain-id you are working with (in the Joltify Testnet case it is `joltifydev_1730-1`)
 * the `commission-rate` is the rate you will charge your delegates (in the example above, 10 percent)
 * the `commission-max-rate` is the most you are allowed to charge your delegates (in the example above, 20 percent)
 * the `commission-max-change-rate` is how much you can increase your commission rate in a 24 hour period (in the example above, 5 percent per day until reaching the max rate)
