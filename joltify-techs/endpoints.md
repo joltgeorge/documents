@@ -9,7 +9,7 @@
 
 ## Mainnet Endpoints
 
-These following API's are recommended for development purposes. For maximum control and reliability it's recommended to run your own node. This can be easily accomplished by using the [Joltify installer](nodes-and-validators/running-a-node/joltify-installer.md).
+These following API's are recommended for development purposes. For maximum control and reliability it's recommended to run your own node. This can be easily accomplished by using the [Joltify installer](nodes-and-validators/joltify-installer.md).
 
 * gRPC endpoints: [https://grpc.joltify.io](https://grpc.joltify.io/)
 * gRPC-gateway: [https://rpc.joltify.io](https://rpc.joltify.io/)
