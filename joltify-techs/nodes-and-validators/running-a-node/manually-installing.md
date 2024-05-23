@@ -19,7 +19,6 @@ The following example is based on **Ubuntu (Debian)** and assumes you are using 
 ```sh
 # 1. Update the system
 sudo apt update
-sudo apt upgrade
 ```
 
 ```sh

@@ -14,7 +14,7 @@ Users are required to obtain their **jolt-address** to participate in the testne
 4. **Enable** the visibility of the Joltify Testnet network in the Keplr Wallet.
    1. Go to "Settings" -> "General" -> "Manage Chain Visibility".
    2. Search "Joltify Testnet network" by typing `JoltDev3`.
-      1. The Joltify Testnet ChainID is `JoltDev3`.
+      1. The Joltify Testnet Chain Name is `JoltDev3`.
    3. Tick the box to enable the visibility of the Joltify Testnet network on Keplr.
 5. **Copy** your _**jolt-address**_.
    1. Open the Keplr Wallet extension.

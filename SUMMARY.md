@@ -48,6 +48,7 @@
     * [Manually Installing](joltify-techs/nodes-and-validators/running-a-node/manually-installing.md)
   * [Validating On Joltify](joltify-techs/nodes-and-validators/validating-on-joltify.md)
 * [Endpoints](joltify-techs/endpoints.md)
+* [Connection](joltify-techs/connection.md)
 
 ## Joltify Testnet
 
