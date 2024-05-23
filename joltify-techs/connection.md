@@ -44,7 +44,7 @@ Users have the following options to set up their accounts in the Keplr wallets.
 
 ### 1. Download the MetaMask Wallet Extension
 
-**Download** the Metamask wallet extension from the Chrome Web Store.
+* **Download** the Metamask wallet extension from the Chrome Web Store.
 
 ### 2. Add accounts in the MetaMask wallet
 
@@ -63,7 +63,7 @@ Users can use the following configuration to add Joltify EVM network in the Meta
 
 #### Joltify EVM Mainnet Config
 
-* Chain Name: Joltevm-mainnet
+* Chain Name: joltify-evm-mainnet
 * RPC URL: [https://evm.joltify.io/](https://evm.joltify.io/)
 * Chain ID: 1729
 * Currency Symbol: JOLT
@@ -71,7 +71,7 @@ Users can use the following configuration to add Joltify EVM network in the Meta
 
 #### Joltify Testnet
 
-* Chain Name: joltevm-dev
+* Chain Name: joltify-evm-testnet
 * RPC URL: [http://65.109.48.184:8555/](http://65.109.48.184:8555/)
 * Chain ID: 1730
 * Currency Symbol: JOLT

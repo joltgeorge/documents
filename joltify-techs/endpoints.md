@@ -11,7 +11,7 @@
 
 These following API's are recommended for development purposes. For maximum control and reliability it's recommended to run your own node. This can be easily accomplished by using the [Joltify installer](nodes-and-validators/running-a-node/joltify-installer.md).
 
-* gRPC endpoints: [grpc.joltify.io:9090](http://grpc.joltify.io:9090/)
+* gRPC endpoints: [https://grpc.joltify.io](https://grpc.joltify.io/)
 * gRPC-gateway: [https://rpc.joltify.io](https://rpc.joltify.io/)
 * lcd-endpoint: [https://lcd.joltify.io](https://lcd.joltify.io/swagger/#/)
 
@@ -21,10 +21,11 @@ LCD Swagger:
 
 ## Testnet Endpoints
 
+* gRPC endpoints: [https://grpc-dev3.joltify.io](https://grpc-dev3.joltify.io/)
 * gRPC-gateway: [https://rpc-dev3.joltify.io](https://rpc-dev3.joltify.io/)
 * lcd-endpoint: [https://rest-dev3.joltify.io](https://rest-dev3.joltify.io/swagger/)
 
-LCD Swagger
+LCD Swagger:
 
 * lcd swagger: [https://rest-dev3.joltify.io/swagger/](https://rest-dev3.joltify.io/swagger/)
 
