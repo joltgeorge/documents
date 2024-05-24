@@ -125,7 +125,7 @@ sed -i -E 's|persistent_peers = \"\"|persistent_peers = \"<peer_address>\"|g' $H
 You can use the following `peer_address` to run a node on Joltify mainnet:
 
 ```toml
-peer_address = "1063f14d45345b3ed0c0e533bda52e78de754d24@37.27.18.236:26656"
+peer_address = "1063f14d45345b3ed0c0e533bda52e78de754d24@37.27.18.236:26656,34e0148645d860f45db510981f15da94b6b9d6ce@168.119.171.59:26656,2dd612a8c7268da6685c612f956eba2f42ae06f3@64.176.42.11:26656"
 ```
 
 ### 6. Setup cosmovisor
