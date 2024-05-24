@@ -116,11 +116,16 @@ Next, you'll need to tell your node how to connect with other nodes that are alr
 
 A seed node is a node who relays the addresses of other peers which they know of. These nodes constantly crawl the network to try to get more peers. The addresses which the seed node relays get saved into a local address book. Once these are in the address book, you will connect to those addresses directly.
 
-Run the following to place the seed info in the config.toml file (replace `PEER_ADDRESS` with the valid peer address):
+Run the following to place the seed info in the config.toml file (replace `peer_address` with the valid peer address):
 
 ```sh
-# e.g., peer_address = 545e0121ef3cc8fb7bf319a8ec62657272c0618e@67.219.103.128:26656
 sed -i -E 's|persistent_peers = \"\"|persistent_peers = \"<peer_address>\"|g' $HOME/.joltify/config/config.toml
+```
+
+You can use the following `peer_address` to run a node on Joltify mainnet:
+
+```toml
+peer_address = "1063f14d45345b3ed0c0e533bda52e78de754d24@37.27.18.236:26656"
 ```
 
 ### 6. Setup cosmovisor
