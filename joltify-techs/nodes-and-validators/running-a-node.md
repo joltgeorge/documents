@@ -1,11 +1,25 @@
-# Manually Installing
+# Running a Fullnode
+
+A full node is a program that fully validates transactions and blocks of a blockchain. It is distinct from a light node that only processes block headers and a small subset of transactions. Running a full-node requires more resources than a light-node but is necessary in order to be a validator. In practice, running a full-node only implies running a non-compromised and up-to-date version of the software with low network latency and without downtime.
+
+It is encouraged for users to run full-nodes even if they do not plan to be validators.
+
+You can join Joltify network as a node by using Joltify installer.
+
+{% content-ref url="joltify-installer.md" %}
+[joltify-installer.md](joltify-installer.md)
+{% endcontent-ref %}
+
+Alternatively, you can manually install a full node by following steps below.&#x20;
+
+## Manually install a full node
 
 {% hint style="info" %}
 **Requirements**\
 Before starting, make sure you read the [requirement](requirements.md) to make sure your hardware meets the necessary requirements.
 {% endhint %}
 
-## 1. Setup your environment
+### 1. Setup your environment
 
 In order to run a full node, you need to build `joltify` which requires `Go`, `git`, `gcc`, `make`, and `supervisor` installed.
 
@@ -19,7 +33,6 @@ The following example is based on **Ubuntu (Debian)** and assumes you are using 
 ```sh
 # 1. Update the system
 sudo apt update
-sudo apt upgrade
 ```
 
 ```sh
@@ -38,7 +51,7 @@ source ~/.bashrc
 go version
 ```
 
-## 2. Build the software
+### 2. Build the software
 
 In your terminal, you can run the following to build `joltify` binary CLI:&#x20;
 
@@ -73,7 +86,7 @@ server_name: joltify
 version: 0.x.x
 ```
 
-## 3. Initialize the working directory
+### 3. Initialize the working directory
 
 Configuration files and chain data will be stored inside the `$HOME/.jolityf` directory by default. In order to create this folder and all the necessary data we need to initialize a new full node using the `joltify init` command.
 
@@ -87,7 +100,7 @@ joltify init <node_name> --chain-id <chain_id> --home $HOME/.joltify
 You can choose any `node_name` value you like. It is a public name for the node such as 'my\_joltify\_node', and will be saved in the `config.toml` under the `$HOME/.joltify/` working directory.
 {% endhint %}
 
-## 4. GET the genesis file
+### 4. GET the genesis file
 
 To connect to an existing network, or start a new one, a genesis file is required. The file contains all the settings telling how the genesis block of the network should look like.
 
@@ -97,7 +110,7 @@ Download and place the genesis file in the joltify config folder (replace `RPC_U
 curl <rpc_url>/genesis |jq '.result''.genesis'>$HOME/.joltify/config/genesis.json
 ```
 
-## 5. Setup seeds
+### 5. Setup seeds
 
 Next, you'll need to tell your node how to connect with other nodes that are already present on the network. In order to do so, you will use the `seeds` and `persistent_peers` values of the `$HOME/.joltify/config/config.toml` file.
 
@@ -110,11 +123,11 @@ Run the following to place the seed info in the config.toml file (replace `PEER_
 sed -i -E 's|persistent_peers = \"\"|persistent_peers = \"<peer_address>\"|g' $HOME/.joltify/config/config.toml
 ```
 
-## 6. Set Up Cosmovisor
+### 6. Setup cosmovisor
 
 The Cosmos team provides a tool named _Cosmovisor_ that allows your node to perform some automatic operations when needed. This is particularly useful when dealing with on-chain upgrades, because Cosmovisor can help you by taking care of downloading the updated binary and restarting the node for you.
 
-### 6.1. Install Cosmovisor
+### 6.1 Install cosmovisor
 
 Set up Cosmovisor to ensure any future upgrades happen flawlessly. To install Cosmovisor:
 
@@ -124,7 +137,7 @@ go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@latest
 
 (You may also refer to the Cosmovisor [installation instructions](https://github.com/cosmos/cosmos-sdk/tree/main/tools/cosmovisor#installation).)
 
-### 6.2. Create the required directories
+### 6.2 Create the required directories
 
 ```sh
 mkdir -p $HOME/.joltify/cosmovisor
@@ -133,7 +146,7 @@ mkdir -p $HOME/.joltify/cosmovisor/genesis/bin
 mkdir -p $HOME/.joltify/cosmovisor/upgrades
 ```
 
-### 6.3. Set the environment variables
+### 6.3 Set the environment variables
 
 ```sh
 echo "# Setup Cosmovisor" >> $HOME/.profile
@@ -148,13 +161,13 @@ source $HOME/.profile
 
 You may leave out `UNSAFE_SKIP_BACKUP=true`, however the backup takes a decent amount of time and public snapshots of old states are available.
 
-### 6.4. Copy the current joltify binary into the cosmovisor/genesis folder:
+### 6.4 Copy the current joltify binary into the cosmovisor/genesis folder:
 
 ```sh
 cp $GOPATH/bin/joltify ~/.joltify/cosmovisor/genesis/bin
 ```
 
-### 6.5. Check binary version
+### 6.5 Check binary version
 
 Ensure the version of cosmovisor and joltify are the same:
 
@@ -163,9 +176,9 @@ cosmovisor version
 joltify version
 ```
 
-## 7. Start Cosmovisor Service
+### 7. Start cosmovisor service
 
-### 7.1. Construct comosvisor conf file
+### 7.1 Construct comosvisor conf file
 
 Construct the `cosmovisor.conf` file for starting the cosmoviso service (replace `user_name`, `GOPATH` and `HOME` with your choice):
 
@@ -201,7 +214,7 @@ Move the `cosmovisor.conf` file to the supervisor conf folder:
 mv cosmovisor.conf /etc/supervisor/conf.d/
 ```
 
-### 7.2. Start Supervisord
+### 7.2 Start supervisord
 
 Run the following to start cosmovisor via supervisor:
 
@@ -222,7 +235,7 @@ supervisorctl update
 supervisorctl status cosmovisor
 ```
 
-## 8. Check Node Sync Progress
+### 8. Check node syncing progress
 
 Once you start the `cosmovisor` via supervisor successfully, you can track your the sync progress of your full node:
 

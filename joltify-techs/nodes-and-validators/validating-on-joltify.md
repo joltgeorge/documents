@@ -1,38 +1,46 @@
-# Validating On Joltify
+# Validating on Joltify
+
+To become a validator, you can use [Joltify installer ](joltify-installer.md)or follow the steps below.
 
 ## 1. Run a full node
 
-To become a validator, you must first have `joltify` binary CLI installed and be able to run a full node. You can follow the [guide](running-a-node/) to setup your full node if you haven't yet.
+To become a validator, you must first have `joltify` binary CLI installed and be able to run a full node. You can follow the [guide](running-a-node.md) to setup your full node if you haven't yet.
 
 ## 2. Create a validator
 
 In order to create a validator, you need to create a wallet first. This will be used in order to hold the tokens that you will later delegate to your validator node, allowing the validator to properly work.
 
-For securing a validator, we highly recommend using a Ledger device. To create a new wallet with a Ledger (replace `key_name` with a name of your choice), please run:
+You can run the following to add key (replace `key_name` with a name of your choice):
 
 ```sh
-joltify keys add <key_name> --ledger
+joltify keys add <key_name> --keyring-backend file
+```
+
+Alternatively, for securing a validator, we highly recommend using a Ledger device. To create a new wallet with a Ledger (replace `key_name` with a name of your choice), please run:
+
+```sh
+joltify keys add <key_name> --keyring-backend file --ledger
 ```
 
 {% hint style="info" %}
 If you encounter any connection problem with Ledger, you can refer to the [Ledger Support](https://support.ledger.com/hc/en-us/articles/115005165269-Fix-USB-connection-issues-with-Ledger-Live?support=true).&#x20;
 {% endhint %}
 
-To ensure your wallet was saved to your keyring, the wallet name (i.e., `key_name`) is in your keys list:
+To ensure your wallet was saved to your keyring, you can check the keys list by running the following command:
 
 ```sh
-joltify keys list
+joltify keys list --keyring-backend file
 ```
 
 ## 3. Obtain validator public key
 
-The last thing needed before initialising the validator is to obtain your validator public key which was created when you first initialised your node. To obtain your validator pubkey:
+The last thing needed before initialising the validator is to obtain your validator public key which was created when you first initialised your node. To obtain your validator `pubkey`:
 
 ```
 joltify tendermint show-validator
 ```
 
-## 4. Create Validator Command
+## 4. Create validator
 
 Ensure you have a small amount of JOLT on the wallet address you are using on your keyring in order to successfully send a transaction. Once you have a balance on the address on your keyring, you can now send the create-validator transaction.
 
@@ -40,8 +48,7 @@ Here is the empty command:
 
 ```shell
 joltify tx staking create-validator \
---ledger \ # if you are using ledger
---from=[KEY_NAME] \
+--from=[key_name] \
 --amount=[staking_amount_ujolt] \
 --pubkey=$(joltify tendermint show-validator) \
 --moniker="[moniker_id_of_your_node]" \
@@ -51,43 +58,41 @@ joltify tx staking create-validator \
 --commission-max-rate="[maximum_commission_rate]" \
 --commission-max-change-rate="[maximum_rate_of_change_of_commission]" \
 --min-self-delegation="[min_self_delegation_amount]" \
---gas="auto" \
---gas-prices="[gas_price]" \
+--ledger \ # use this flag if you are using ledger
 ```
 
 Here is the same command but with example values:
 
 ```sh
 joltify tx staking create-validator \
---ledger \ # if you are using ledger
---from=myValidator \
---amount=100000000ujolt \
---pubkey=  \
---moniker="brian" \
---security-contact="brian@joltify.finance" \
---chain-id="joltifydev-1730-1" \
---commission-rate="0.1" \
+--from=myKeyName \
+--amount=1000jolt \
+--pubkey=$(joltify tendermint show-validator) \
+--moniker="yourMoniker" \
+--security-contact="test@joltify.finance" \
+--chain-id="joltifydev_1730-1" \
+--commission-rate="0.05" \
 --commission-max-rate="0.2" \
---commission-max-change-rate="0.05" \
+--commission-max-change-rate="0.01" \
 --min-self-delegation="100000000" \
+--ledger \ # use this flag if you are using ledger
 ```
 
 Here is the explanation of these command flags:
 
-* the `ledger` flag indicates that you are using Ledger
-* the `from` flag is the KEY\_NAME you created when initialising the key on your keyring
-* the `amount` flag is the amount you will place in your own validator in `ujolt` (in the above example, 100000000ujolt is 100JOLT )
-* the `pubkey` is the validator public key found earlier
-* the `moniker` is a human readable name you choose for your validator
-* the `security-contact` is an email your delegates are able to contact you at
-* the `chain-id` is whatever chain-id you are working with (in the Joltify Testnet case it is `joltifydev_1730-1`)
-* the `commission-rate` is the rate you will charge your delegates (in the example above, 10 percent)
-* the `commission-max-rate` is the most you are allowed to charge your delegates (in the example above, 20 percent)
-* the `commission-max-change-rate` is how much you can increase your commission rate in a 24 hour period (in the example above, 5 percent per day until reaching the max rate)
-* the `min-self-delegation` is the lowest amount of personal funds the validator is required to have in their own validator to stay bonded (in the example above, 100JOLT)
-* the `gas-prices` is the amount of gas used to send this create-validator transaction
+* The `from` flag is the KEY\_NAME you created when initialising the key on your keyring.
+* The `amount` flag is the amount you will place in your own validator (Note that the initial staking amount must be greater than `min-self-delegation`).
+* The `pubkey` is the validator public key found earlier.
+* The `moniker` is a human readable name you choose for your validator.
+* The `security-contact` is an email that your delegaters are able to  use to contact you.
+* The `chain-id` is whatever chain-id you are working with (in the Joltify Testnet case it is `joltifydev_1730-1`).
+* The `commission-rate` is the rate you will charge your delegates (in the example above, 10 percent).
+* The `commission-max-rate` is the most you are allowed to charge your delegates (in the example above, 20 percent).
+* The `commission-max-change-rate` is how much you can increase your commission rate in a 24 hour period (in the example above, 5 percent per day until reaching the max rate).
+* The `min-self-delegation` is the lowest amount of personal funds the validator is required to have in their own validator to stay bonded (in the example above, 100JOLT).
+* The `ledger` flag indicates that you are using Ledger.
 
-## Track Validator Active Set
+## 5. Track validator active set
 
 ```sh
 joltify query staking validators --limit 300 -o json | jq -r '.validators[] |
@@ -105,7 +110,7 @@ joltify query staking validators --limit 300 -o json | jq -r '.validators[] |
 
 If your bond status is `BOND_STATUS_BONDED`, congratulations, your validator is part of the active validator set!
 
-## Track Validator Signing
+## 6. Track validator's signing
 
 To track your validator's signing history, copy the validator public key:
 
