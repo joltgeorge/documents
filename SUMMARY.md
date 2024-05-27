@@ -44,8 +44,8 @@
 * [Nodes and Validators](joltify-techs/nodes-and-validators/README.md)
   * [Requirements](joltify-techs/nodes-and-validators/requirements.md)
   * [Joltify Installer](joltify-techs/nodes-and-validators/joltify-installer.md)
-  * [Running a Fullnode](joltify-techs/nodes-and-validators/running-a-node.md)
-  * [Validating on Joltify](joltify-techs/nodes-and-validators/validating-on-joltify.md)
+  * [Run a Fullnode](joltify-techs/nodes-and-validators/running-a-node.md)
+  * [Become a Validator](joltify-techs/nodes-and-validators/validating-on-joltify.md)
 * [Endpoints](joltify-techs/endpoints.md)
 * [Connection](joltify-techs/connection.md)
 
